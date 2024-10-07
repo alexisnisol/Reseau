@@ -26,6 +26,11 @@ class Session:
     def mainSession(self):
         while True:
             line = self.file.readline().strip()
+
+            #cmd, *args = line.split()
+            #method = "command_%s" % cmd.lower()
+            #method = getattr(self, method, self.otherwise) => Appel de méthode dynamique => si cmd = "incr", appel de la méthode nommée command_incr() => otherwise, si l'appel de la méthode est inconnue, (on fait renvoyer write('err'))
+            #method(args)
             if line == "get":
                 self.file.write(f"val {self.server.counter}\n") #\n important pour indiquer que la ligne est terminée => readline()
                 self.file.flush() #force l'envoi des données
