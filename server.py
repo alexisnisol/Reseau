@@ -41,7 +41,7 @@ class Session:
                 self.server.counter -= 1
                 self.file.write(f"val {self.server.counter}\n")
                 self.file.flush()
-            elif line.startswith("add"):
+            elif line.split(" ")[0] == "add":
                 try:
                     self.server.counter += int(line.split(" ")[1])
                     self.file.write(f"val {self.server.counter}\n")
